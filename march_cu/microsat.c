@@ -77,9 +77,7 @@ void assume (struct solver* S, int lit) {                          // Add the as
 
 int* getMemory (struct solver* S, int mem_size) {                  // Allocate memory of size mem_size
   if (S->mem_used + mem_size > S->mem_max) {                       // In case the code is used within a code base
-    S->mem_max = 3 * (S->mem_used + mem_size) / 2;                 // Increase the maximum allowed memory by ~50%
-    printf ("c reallocating memory to %i\n", S->mem_max);
-    S->DB = realloc (S->DB, sizeof(int) * S->mem_max); }           // And allocated the database appropriately
+    printf ("c out of memory\n"); exit (0); }
   int *store = (S->DB + S->mem_used);                              // Compute a pointer to the new memory location
   S->mem_used += mem_size;                                         // Update the size of the used memory
   return store; }                                                  // Return the pointer
@@ -232,7 +230,7 @@ void initCDCL (struct solver* S, int n, int m) {
   if (n < 1)   n = 1;                  // The code assumes that there is at least one variable
   S->nVars       = n;                  // Set the number of variables
   S->nClauses    = m;                  // Set the number of clauases
-  S->mem_max     = 10000000;           // Set the initial maximum memory
+  S->mem_max     = 100000000;          // Set the initial maximum memory
   S->mem_used    = 0;                  // The number of integers allocated in the DB
   S->nLemmas     = 0;                  // The number of learned clauses -- redundant means learned
   S->nConflicts  = 0;                  // Under of conflicts which is used to updates scores
