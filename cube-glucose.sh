@@ -1,6 +1,7 @@
 CNF=$1
 DIR="$(pwd)"
 OUT="$(pwd)/tmp"
+mkdir -p $OUT
 #~/Folkman/vdW/march_cu/march_cu $CNF -o $DIR/cubes$$ $2 $3 $4 $5 $6 $7 $8 $9
 $DIR/march_cu/march_cu $CNF -o $OUT/cubes$$ $2 $3 $4 $5 $6 $7 $8 $9
 echo "p inccnf" > $DIR/formula$$.icnf

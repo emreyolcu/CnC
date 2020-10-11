@@ -1,4 +1,5 @@
 DIR="$(pwd)/tmp"
+mkdir -p $DIR
 CNF=$1
 ./march_cu/march_cu $CNF -o $DIR/cubes$$ $2 $3 $4 $5 $6 $7 $8 $9
 echo "p inccnf" > $DIR/formula$$.icnf
