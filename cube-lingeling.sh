@@ -5,5 +5,5 @@ CNF=$1
 echo "p inccnf" > $DIR/formula$$.icnf
 cat $CNF | grep -v c >> $DIR/formula$$.icnf
 cat $DIR/cubes$$ >> $DIR/formula$$.icnf
-time ./lingeling/ilingeling $DIR/formula$$.icnf -b 8
+time ./lingeling/ilingeling $DIR/formula$$.icnf -b 30
 rm $DIR/formula$$.icnf
